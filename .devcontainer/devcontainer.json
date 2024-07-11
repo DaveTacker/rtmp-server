@@ -1,0 +1,74 @@
+{
+  "name": "rtmp-server",
+  "remoteUser": "${localEnv:USER}",
+  "containerUser": "${localEnv:USER}",
+  "postStartCommand": "npm install",
+  "privileged": true,
+  "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu-22.04",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "configureZshAsDefaultShell": "true"
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest",
+      "ppa": "false"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "dockerDashComposeVersion": "v2"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.tabSize": 2,
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": true,
+        "editor.renderFinalNewline": "on",
+        "editor.trimAutoWhitespace": true,
+        "files.encoding": "utf8",
+        "files.eol": "auto",
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": true,
+        "prettier.requireConfig": true,
+        "prettier.documentSelectors": ["**/*.{md,yaml,yml,xml,conf,sh,dockercompose,dockerfile,nginx,nginxconf}"],
+        "search.useIgnoreFiles": true,
+        "search.exclude": {
+          "**/*-lock.json": true,
+          "**/*.lock": true,
+          "**/*cache*": true,
+          "**/node_modules/*": true
+        },
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "typescript.updateImportsOnFileMove.enabled": "always",
+        "[dockerfile]": {
+          "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+        },
+        "[md]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
+          "editor.trimAutoWhitespace": false,
+          "editor.wordWrap": "off"
+        },
+        "[*.{nginx,nginxconf}]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[*.{yml,yaml}]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        }
+      },
+      "extensions": [
+        "christian-kohler.npm-intellisense",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker",
+        "ms-vscode-remote.remote-containers",
+        "ms-vscode-remote.remote-wsl",
+        "yzhang.markdown-all-in-one",
+        "ahmadalli.vscode-nginx-conf",
+        "redhat.vscode-yaml"
+      ]
+    }
+  }
+}

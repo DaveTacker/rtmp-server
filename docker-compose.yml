@@ -1,0 +1,24 @@
+services:
+  rtmp-server:
+    tty: true
+    working_dir: /app
+    user: root
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - DEBIAN_VERSION=bullseye
+        - NGINX_VERSION=1.19.0
+        - NGINX_RTMP_VERSION=1.2.1
+        - FFMPEG_VERSION=4.2.1
+    volumes:
+      - ./players:/usr/local/nginx/html/players
+      - ./src/nginx/conf.nginx:/etc/nginx/nginx.conf
+      - ./src/stunnel/stunnel.conf:/etc/stunnel/stunnel.conf
+      - ./tmp/logs:/mnt/logs
+      - ./tmp/recordings:/mnt/recordings
+      - ./tmp/streams:/mnt/streams
+    restart: unless-stopped
+    ports:
+      - "1935:1935"
+      - "80:80"

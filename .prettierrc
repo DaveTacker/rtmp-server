@@ -1,0 +1,23 @@
+{
+  "tabWidth": 2,
+  "useTabs": false,
+  "singleQuote": true,
+  "endOfLine": "lf",
+  "printWidth": 200,
+  "bracketSameLine": true,
+  "bracketSpacing": true,
+  "trailingComma": "all",
+  "semi": true,
+  "overrides": [
+    {
+      "files": "**/*.{nginx,nginxconf}",
+      "options": {
+        "alignDirectives": false,
+        "alignUniversally": false,
+        "wrapParameters": true,
+        "continuationIndent": 2
+      }
+    }
+  ],
+  "plugins": ["prettier-plugin-nginx", "prettier-plugin-sh"]
+}
